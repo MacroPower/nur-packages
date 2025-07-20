@@ -9,22 +9,22 @@ system ? builtins.currentSystem
 }:
 let
   shaMap = {
-    x86_64-linux = "03h2p7f4w1dics426ihlz8ib2v5qjcw7b2x7mq4r6cbldw9358lh";
-    aarch64-linux = "041s1ka6nl5vixpjiwzfmxh58s7bwwk9gxq0dgzr52a3rl0wz2l3";
-    x86_64-darwin = "0dw8dvnakv2fcjv4wdf84mlfrnv9ia8dc8ihxynsjzvf1y13lscb";
-    aarch64-darwin = "0h0wj5xkp7gr08wyhm52ijc1n2mqswsyj7xbwazv3q4fj3dlv8zh";
+    x86_64-linux = "0yz6wf9xsqq081x1knbfyd6q18hzg4ysh84kbxsg6a4xqx6z17xm";
+    aarch64-linux = "07asqjaahx615y4851iisz2gxzaiwv30jgm0knsqa295vw0i1pz2";
+    x86_64-darwin = "0bida4hw9q80jaw2nmfl2iyf7y3prqkh2wqq3f4dzmqlsnf500lj";
+    aarch64-darwin = "0bjlsyx036wfxdhhmbxgcfbz5bbv6xhcvkc11znpxwkmh1a4qk9r";
   };
 
   urlMap = {
-    x86_64-linux = "https://github.com/MacroPower/kat/releases/download/v0.20.1/kat_Linux_x86_64.tar.gz";
-    aarch64-linux = "https://github.com/MacroPower/kat/releases/download/v0.20.1/kat_Linux_arm64.tar.gz";
-    x86_64-darwin = "https://github.com/MacroPower/kat/releases/download/v0.20.1/kat_Darwin_x86_64.tar.gz";
-    aarch64-darwin = "https://github.com/MacroPower/kat/releases/download/v0.20.1/kat_Darwin_arm64.tar.gz";
+    x86_64-linux = "https://github.com/MacroPower/kat/releases/download/v0.21.0/kat_Linux_x86_64.tar.gz";
+    aarch64-linux = "https://github.com/MacroPower/kat/releases/download/v0.21.0/kat_Linux_arm64.tar.gz";
+    x86_64-darwin = "https://github.com/MacroPower/kat/releases/download/v0.21.0/kat_Darwin_x86_64.tar.gz";
+    aarch64-darwin = "https://github.com/MacroPower/kat/releases/download/v0.21.0/kat_Darwin_arm64.tar.gz";
   };
 in
 stdenvNoCC.mkDerivation {
   pname = "kat";
-  version = "0.20.1";
+  version = "0.21.0";
   src = fetchurl {
     url = urlMap.${system};
     sha256 = shaMap.${system};
@@ -37,6 +37,10 @@ stdenvNoCC.mkDerivation {
   installPhase = ''
     mkdir -p $out/bin
     cp -vr ./kat $out/bin/kat
+    installManPage ./man/kat.1
+    installShellCompletion ./completion/bash/kat.bash
+    installShellCompletion ./completion/zsh/_kat
+    installShellCompletion ./completion/fish/kat.fish
   '';
 
   system = system;
