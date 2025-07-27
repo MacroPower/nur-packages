@@ -8,13 +8,16 @@
 
 { pkgs ? import <nixpkgs> { } }:
 
-{
-  # The `lib`, `modules`, and `overlays` names are special
-  lib = import ./lib { inherit pkgs; }; # functions
-  modules = import ./modules; # NixOS modules
-  overlays = import ./overlays; # nixpkgs overlays
+let
+  self = {
+    # The `lib`, `modules`, and `overlays` names are special
+    lib = import ./lib { inherit pkgs; }; # functions
+    modules = import ./modules; # NixOS modules
+    overlays = import ./overlays; # nixpkgs overlays
 
-  kat = pkgs.callPackage ./pkgs/kat { };
-  kclipper = pkgs.callPackage ./pkgs/kclipper { };
-  kcl-lsp = pkgs.callPackage ./pkgs/kcl-lsp { };
-}
+    kat = pkgs.callPackage ./pkgs/kat { };
+    kcl-lsp = pkgs.callPackage ./pkgs/kcl-lsp { };
+    kclipper = pkgs.callPackage ./pkgs/kclipper { kcl-lsp = self.kcl-lsp; };
+  };
+in
+self
