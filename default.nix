@@ -15,4 +15,6 @@
   overlays = import ./overlays; # nixpkgs overlays
 
   kat = pkgs.callPackage ./pkgs/kat { };
+  kclipper = pkgs.callPackage ./pkgs/kclipper { };
+  kcl-lsp = pkgs.callPackage ./pkgs/kcl-lsp { };
 }
