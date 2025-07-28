@@ -9,22 +9,22 @@ system ? builtins.currentSystem
 }:
 let
   shaMap = {
-    x86_64-linux = "003882jwn4wkli9hv2h1rm8j1l7g0qkbr2c2isx1x116qbnhsl4g";
-    aarch64-linux = "1wzd34i3fjkjc74bmc4sdw0y0g35sr85skffviwssmvac51kyvj7";
-    x86_64-darwin = "1sqxp5hys6p5dfjdvb282522n6if9i0jrg2rsv726pfbf0hay9rf";
-    aarch64-darwin = "0x8nya8w80x1nrpphd8g90ggsq7aqmjkm0c2zfi358brwlgflfy7";
+    x86_64-linux = "0g93bbfz4sbv3rdxyl47dx4hz9vd2xzqdify0j5pxw53iprk8jdd";
+    aarch64-linux = "0zw2i9ncvl8xvrh31k8bm1k8b6gsg4j1h45rv9fq4safccv28jxw";
+    x86_64-darwin = "1bhnrpd1m7kkhh2y3awqg73945ay4vkcxad7y0bxizbv8mcwbvzx";
+    aarch64-darwin = "1f4ipdj1hv1ywig4f2qqza04qf8g9py16993662rscyix2dqs1vv";
   };
 
   urlMap = {
-    x86_64-linux = "https://github.com/macropower/kclipper/releases/download/v0.16.0/kclipper_Linux_x86_64.tar.gz";
-    aarch64-linux = "https://github.com/macropower/kclipper/releases/download/v0.16.0/kclipper_Linux_arm64.tar.gz";
-    x86_64-darwin = "https://github.com/macropower/kclipper/releases/download/v0.16.0/kclipper_Darwin_x86_64.tar.gz";
-    aarch64-darwin = "https://github.com/macropower/kclipper/releases/download/v0.16.0/kclipper_Darwin_arm64.tar.gz";
+    x86_64-linux = "https://github.com/macropower/kclipper/releases/download/v0.16.1/kclipper_Linux_x86_64.tar.gz";
+    aarch64-linux = "https://github.com/macropower/kclipper/releases/download/v0.16.1/kclipper_Linux_arm64.tar.gz";
+    x86_64-darwin = "https://github.com/macropower/kclipper/releases/download/v0.16.1/kclipper_Darwin_x86_64.tar.gz";
+    aarch64-darwin = "https://github.com/macropower/kclipper/releases/download/v0.16.1/kclipper_Darwin_arm64.tar.gz";
   };
 in
 stdenvNoCC.mkDerivation {
   pname = "kclipper";
-  version = "0.16.0";
+  version = "0.16.1";
   src = fetchurl {
     url = urlMap.${system};
     sha256 = shaMap.${system};
