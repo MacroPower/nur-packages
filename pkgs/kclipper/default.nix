@@ -6,27 +6,25 @@ system ? builtins.currentSystem
 , fetchurl
 , installShellFiles
 , stdenvNoCC
-, kcl-lsp
-, makeWrapper
 }:
 let
   shaMap = {
-    x86_64-linux = "19hz7s1z342xaxpgjmigf40nbzyvy0azjna97fz3ia96algirbx2";
-    aarch64-linux = "1r84jl7s3zn3a2ly4v9l912gsk59pvdmq7mrzq9q522f62w9zdf5";
-    x86_64-darwin = "0iaxxr98ywxmcw6p56nx27s3xh1b1gpk1wgrl5vcg4zkkqc1npym";
-    aarch64-darwin = "07585gqn5bg046vwx42mn2psg893f7hzxfazq8h7ya7pnn5xxd9x";
+    x86_64-linux = "003882jwn4wkli9hv2h1rm8j1l7g0qkbr2c2isx1x116qbnhsl4g";
+    aarch64-linux = "1wzd34i3fjkjc74bmc4sdw0y0g35sr85skffviwssmvac51kyvj7";
+    x86_64-darwin = "1sqxp5hys6p5dfjdvb282522n6if9i0jrg2rsv726pfbf0hay9rf";
+    aarch64-darwin = "0x8nya8w80x1nrpphd8g90ggsq7aqmjkm0c2zfi358brwlgflfy7";
   };
 
   urlMap = {
-    x86_64-linux = "https://github.com/macropower/kclipper/releases/download/v0.15.1/kclipper_Linux_x86_64.tar.gz";
-    aarch64-linux = "https://github.com/macropower/kclipper/releases/download/v0.15.1/kclipper_Linux_arm64.tar.gz";
-    x86_64-darwin = "https://github.com/macropower/kclipper/releases/download/v0.15.1/kclipper_Darwin_x86_64.tar.gz";
-    aarch64-darwin = "https://github.com/macropower/kclipper/releases/download/v0.15.1/kclipper_Darwin_arm64.tar.gz";
+    x86_64-linux = "https://github.com/macropower/kclipper/releases/download/v0.16.0/kclipper_Linux_x86_64.tar.gz";
+    aarch64-linux = "https://github.com/macropower/kclipper/releases/download/v0.16.0/kclipper_Linux_arm64.tar.gz";
+    x86_64-darwin = "https://github.com/macropower/kclipper/releases/download/v0.16.0/kclipper_Darwin_x86_64.tar.gz";
+    aarch64-darwin = "https://github.com/macropower/kclipper/releases/download/v0.16.0/kclipper_Darwin_arm64.tar.gz";
   };
 in
 stdenvNoCC.mkDerivation {
   pname = "kclipper";
-  version = "0.15.1";
+  version = "0.16.0";
   src = fetchurl {
     url = urlMap.${system};
     sha256 = shaMap.${system};
@@ -34,12 +32,11 @@ stdenvNoCC.mkDerivation {
 
   sourceRoot = ".";
 
-  nativeBuildInputs = [ installShellFiles makeWrapper ];
+  nativeBuildInputs = [ installShellFiles ];
 
   installPhase = ''
     mkdir -p $out/bin
     cp -vr ./kcl $out/bin/kcl
-    wrapProgram $out/bin/kcl --prefix PATH : ${lib.makeBinPath ([ kcl-lsp ])}
   '';
 
   system = system;
