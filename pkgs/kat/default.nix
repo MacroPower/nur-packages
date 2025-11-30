@@ -9,22 +9,22 @@ system ? builtins.currentSystem
 }:
 let
   shaMap = {
-    x86_64-linux = "0cq8pxfpijx1ha2v7fiwnh7v9h1jy3ifpgr682ys8l4l6yp0yjy0";
-    aarch64-linux = "0w9qxabxyzz3rk99psbwrlnpyiw6x606jw3m5gw8bnvnbd64db16";
-    x86_64-darwin = "1q99h9z1h70l5qj53d81ab1gpy439lvijmp70qkbz0dikj1p3wxh";
-    aarch64-darwin = "0nsal47zhz95vd3sqvc9ggkgz78sr9rxgvskq0m0dh3k3p3wl6qj";
+    x86_64-linux = "1d18pmz34l6356gw5i2hdz44jaffxhb260735p1svplmmm1ysrmh";
+    aarch64-linux = "18vmdj59jglff8p97s3rx563hlh3akxrrmwcrn6x7l1zy8d6mhl7";
+    x86_64-darwin = "00d47icjk4w7p746hyycdkhi04fbmfzws9wb1ybsdg1cmjn3ff2c";
+    aarch64-darwin = "0xmgwgs2slj8s4cchnv14yrsyd0slxfk24ci1j8r84nnkylzx9wd";
   };
 
   urlMap = {
-    x86_64-linux = "https://github.com/MacroPower/kat/releases/download/v0.27.0/kat_Linux_x86_64.tar.gz";
-    aarch64-linux = "https://github.com/MacroPower/kat/releases/download/v0.27.0/kat_Linux_arm64.tar.gz";
-    x86_64-darwin = "https://github.com/MacroPower/kat/releases/download/v0.27.0/kat_Darwin_x86_64.tar.gz";
-    aarch64-darwin = "https://github.com/MacroPower/kat/releases/download/v0.27.0/kat_Darwin_arm64.tar.gz";
+    x86_64-linux = "https://github.com/MacroPower/kat/releases/download/v0.28.0/kat_Linux_x86_64.tar.gz";
+    aarch64-linux = "https://github.com/MacroPower/kat/releases/download/v0.28.0/kat_Linux_arm64.tar.gz";
+    x86_64-darwin = "https://github.com/MacroPower/kat/releases/download/v0.28.0/kat_Darwin_x86_64.tar.gz";
+    aarch64-darwin = "https://github.com/MacroPower/kat/releases/download/v0.28.0/kat_Darwin_arm64.tar.gz";
   };
 in
 stdenvNoCC.mkDerivation {
   pname = "kat";
-  version = "0.27.0";
+  version = "0.28.0";
   src = fetchurl {
     url = urlMap.${system};
     sha256 = shaMap.${system};
