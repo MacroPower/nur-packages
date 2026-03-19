@@ -17,4 +17,5 @@
   kat = pkgs.callPackage ./pkgs/kat { };
   kclipper = pkgs.callPackage ./pkgs/kclipper { };
   kcl-lsp = pkgs.callPackage ./pkgs/kcl-lsp { };
+  terrarium = pkgs.callPackage ./pkgs/terrarium { };
 }
