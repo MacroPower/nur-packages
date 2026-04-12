@@ -11,18 +11,18 @@
 let
   inherit (stdenvNoCC.hostPlatform) system;
   shaMap = {
-    x86_64-linux = "sha256-MaS27oQU5DGY7/L9PwdHODEgK3ek0iY7cpHE8S8NBL8=";
-    aarch64-linux = "sha256-rXKe8WrUHgvDkx4qZtFPFVW9f41EZlCQXId5Nm3Yi3I=";
+    x86_64-linux = "sha256-o7PmbrrW3yLVL6gv+TBDd2lGqkBMhtwkgzsBBtVS63w=";
+    aarch64-linux = "sha256-wSQ4YIlmOicrOWz9civMA1XQjhdzoqq0JGNhD0gNs+U=";
   };
 
   urlMap = {
-    x86_64-linux = "https://github.com/macropower/terrarium/releases/download/v0.4.2/terrarium_Linux_x86_64.tar.gz";
-    aarch64-linux = "https://github.com/macropower/terrarium/releases/download/v0.4.2/terrarium_Linux_arm64.tar.gz";
+    x86_64-linux = "https://github.com/macropower/terrarium/releases/download/v0.5.0/terrarium_Linux_x86_64.tar.gz";
+    aarch64-linux = "https://github.com/macropower/terrarium/releases/download/v0.5.0/terrarium_Linux_arm64.tar.gz";
   };
 in
 stdenvNoCC.mkDerivation {
   pname = "terrarium";
-  version = "0.4.2";
+  version = "0.5.0";
   src = fetchurl {
     url = urlMap.${system};
     sha256 = shaMap.${system};
