@@ -14,6 +14,7 @@
   modules = import ./modules; # NixOS modules
   overlays = import ./overlays; # nixpkgs overlays
 
+  hcp_archiver = pkgs.callPackage ./pkgs/hcp_archiver { };
   kat = pkgs.callPackage ./pkgs/kat { };
   kclipper = pkgs.callPackage ./pkgs/kclipper { };
   kcl-lsp = pkgs.callPackage ./pkgs/kcl-lsp { };
