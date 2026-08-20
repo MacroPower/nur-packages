@@ -9,22 +9,22 @@
 let
   inherit (stdenvNoCC.hostPlatform) system;
   shaMap = {
-    x86_64-linux = "sha256-Ren8GE0kNX+e3nkkzZSRjXuNqwK5JvKlRS5dWgbNBd0=";
-    aarch64-linux = "sha256-FeIr6nWZVX6CXLj3lHh7ckm7yzmHxeSiKxOuN33xBfc=";
-    x86_64-darwin = "sha256-JP5Bixb66eQuA+Z/H8wdrkZ/M77kGgX8fnlAvgugmRE=";
-    aarch64-darwin = "sha256-YqVkZZCTTeJmLtK5YwirzShNM6Fbx6hxYUTFRSpc6XA=";
+    x86_64-linux = "sha256-5UJv+ksP1s4nrYxVA6tETlNIEmq5Bc6Mv10Vdu7jysM=";
+    aarch64-linux = "sha256-8s4HWl+Fyq4qAthJPxIHLMw+g1u2P00zCwyal5zkYq0=";
+    x86_64-darwin = "sha256-k6bhiVUFfvuk4HrdHUqFPlVnyqnmm3REm13y9cnrOh4=";
+    aarch64-darwin = "sha256-4gcAwzLK24Y6HrxuaJo4IdSU1SddFBZLQ2Al3RZSJwA=";
   };
 
   urlMap = {
-    x86_64-linux = "https://git.jacobcolvin.com/hcp_archiver/releases/download/v0.12.0/hcp_archiver_Linux_x86_64.tar.gz";
-    aarch64-linux = "https://git.jacobcolvin.com/hcp_archiver/releases/download/v0.12.0/hcp_archiver_Linux_arm64.tar.gz";
-    x86_64-darwin = "https://git.jacobcolvin.com/hcp_archiver/releases/download/v0.12.0/hcp_archiver_Darwin_x86_64.tar.gz";
-    aarch64-darwin = "https://git.jacobcolvin.com/hcp_archiver/releases/download/v0.12.0/hcp_archiver_Darwin_arm64.tar.gz";
+    x86_64-linux = "https://git.jacobcolvin.com/hcp_archiver/releases/download/v0.12.1/hcp_archiver_Linux_x86_64.tar.gz";
+    aarch64-linux = "https://git.jacobcolvin.com/hcp_archiver/releases/download/v0.12.1/hcp_archiver_Linux_arm64.tar.gz";
+    x86_64-darwin = "https://git.jacobcolvin.com/hcp_archiver/releases/download/v0.12.1/hcp_archiver_Darwin_x86_64.tar.gz";
+    aarch64-darwin = "https://git.jacobcolvin.com/hcp_archiver/releases/download/v0.12.1/hcp_archiver_Darwin_arm64.tar.gz";
   };
 in
 stdenvNoCC.mkDerivation {
   pname = "hcp_archiver";
-  version = "0.12.0";
+  version = "0.12.1";
   src = fetchurl {
     url = urlMap.${system};
     sha256 = shaMap.${system};
